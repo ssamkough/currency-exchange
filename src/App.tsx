@@ -16,22 +16,28 @@ const App = () => {
       const res = await fetch("https://api.exchangeratesapi.io/latest");
       const json = await res.json();
 
-      var selectors = document.getElementsByClassName("exchangeSelect");
+      let arr: string[] = [];
       for (var key in json.rates) {
+        arr.push(key);
+      }
+      arr.sort();
+
+      var selectors = document.getElementsByClassName("exchangeSelect");
+      for (var i in arr) {
         var nativeOption = document.createElement("option");
-        nativeOption.text = key;
-        nativeOption.value = key;
+        nativeOption.text = arr[i];
+        nativeOption.value = arr[i];
         selectors[0].appendChild(nativeOption);
 
         var foreignOption = document.createElement("option");
-        foreignOption.text = key;
-        foreignOption.value = key;
+        foreignOption.text = arr[i];
+        foreignOption.value = arr[i];
         selectors[1].appendChild(foreignOption);
       }
     };
 
     fetchData();
-  });
+  }, []);
 
   const convertRate = async () => {
     const res = await fetch(`https://api.exchangeratesapi.io/latest?symbols=${nativeRate},${foreignRate}`);
@@ -41,25 +47,34 @@ const App = () => {
     setForeignNumber(nativeNumber / foreignRateNum);
   };
 
+  const handleChange = (e: any, func: (param: any) => any) => {
+    func(e.target.value);
+  }
+
   return (
     <Container id="app">
-      <Row>
+      <Row id="headerRow" className="appRow">
         <Col>
-          <Form.Control as="select" id="nativeSelect" className="exchangeSelect"></Form.Control>
-        </Col>
-        <Col>
-          <Form.Control as="select" id="foreignSelect" className="exchangeSelect"></Form.Control>
+          <h2>Currency Exchange <span role="img" aria-label="currency exchange emoji">💱</span></h2>
         </Col>
       </Row>
-      <Row>
+      <Row id="selectorRow" className="appRow">
         <Col>
-          <Form.Control id="nativeInput" value={nativeNumber}></Form.Control>
+          <Form.Control as="select" id="nativeSelect" className="exchangeSelect" onChange={(e) => handleChange(e, setNativeRate)} custom></Form.Control>
+        </Col>
+        <Col>
+          <Form.Control as="select" id="foreignSelect" className="exchangeSelect" onChange={(e) => handleChange(e, setForeignRate)}custom></Form.Control>
+        </Col>
+      </Row>
+      <Row id="inputRow" className="appRow">
+        <Col>
+          <Form.Control id="nativeInput" value={nativeNumber} onChange={(e) => handleChange(e, setNativeNumber)}></Form.Control>
         </Col>
         <Col>
           <Form.Control id="foreignInput" value={foreignNumber} disabled></Form.Control>
         </Col>
       </Row>
-      <Row>
+      <Row id="btnRow" className="appRow">
         <Col>
           <Button onClick={() => convertRate()}>Convert</Button>
         </Col>
