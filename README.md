@@ -4,9 +4,7 @@ An app that exchanges the user's currency to a currency of their choice. I am us
 
 ## Implementation 🦄
 
-All we need to use is one request:
-`GET https://api.exchangeratesapi.io/latest?symbols=USD,GBP HTTP/1.1`
-This "requests specific exchange rates by setting the symbols parameter".
+N/A
 
 ## Technology 📟
 
@@ -15,12 +13,12 @@ This "requests specific exchange rates by setting the symbols parameter".
 ## Resources 📚
 
 - [Exchange Rates API](http://exchangeratesapi.io/)
+- [How to Calculate an Exchange Rate](https://www.investopedia.com/articles/forex/090314/how-calculate-exchange-rate.asp)
 
 ## TODO ℹ️
 
-- figure out tech stack
-- start to implement
-  - figure out UI
-  - figure out cache
+- figure out state/api calling troubles
+- figure out cache (to reduce API calls)
+- create tests
 - create subdomain to my site
 - figure out ci/cd
