@@ -17,7 +17,6 @@ N/A
 
 ## TODO ℹ️
 
-- figure out state/api calling troubles
 - figure out cache (to reduce API calls)
 - create tests
 - create subdomain to my site
