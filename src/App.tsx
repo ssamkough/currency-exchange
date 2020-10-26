@@ -49,26 +49,43 @@ const App = () => {
 
   const handleChange = (e: any, func: (param: any) => any) => {
     func(e.target.value);
-  }
+  };
 
   return (
     <Container id="app">
       <Row id="headerRow" className="appRow">
         <Col>
-          <h2>Currency Exchange <span role="img" aria-label="currency exchange emoji">💱</span></h2>
+          <h2>Currency Exchange</h2>
         </Col>
       </Row>
       <Row id="selectorRow" className="appRow">
         <Col>
-          <Form.Control as="select" id="nativeSelect" className="exchangeSelect" onChange={(e) => handleChange(e, setNativeRate)} custom></Form.Control>
+          <Form.Control
+            as="select"
+            id="nativeSelect"
+            className="exchangeSelect"
+            onChange={(e) => handleChange(e, setNativeRate)}
+            data-testid="nativeSelect"
+            custom
+          ></Form.Control>
         </Col>
         <Col>
-          <Form.Control as="select" id="foreignSelect" className="exchangeSelect" onChange={(e) => handleChange(e, setForeignRate)}custom></Form.Control>
+          <Form.Control
+            as="select"
+            id="foreignSelect"
+            className="exchangeSelect"
+            onChange={(e) => handleChange(e, setForeignRate)}
+            custom
+          ></Form.Control>
         </Col>
       </Row>
       <Row id="inputRow" className="appRow">
         <Col>
-          <Form.Control id="nativeInput" value={nativeNumber} onChange={(e) => handleChange(e, setNativeNumber)}></Form.Control>
+          <Form.Control
+            id="nativeInput"
+            value={nativeNumber}
+            onChange={(e) => handleChange(e, setNativeNumber)}
+          ></Form.Control>
         </Col>
         <Col>
           <Form.Control id="foreignInput" value={foreignNumber} disabled></Form.Control>
