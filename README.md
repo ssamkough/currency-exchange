@@ -6,7 +6,7 @@ An app that exchanges the user's currency to a currency of their choice. I am us
 
 1. Install [nodejs LTS](https://nodejs.org/en/).
 2. Clone [git repo](https://github.com/ssamkough/currency-exchange).
-3. Install dependencies via yarn: `yarn add`.
+3. Install dependencies via yarn: `yarn`.
 4. Start react app via yarn: `yarn start`.
 
 ## Technology 📟
