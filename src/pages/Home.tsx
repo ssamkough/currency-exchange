@@ -54,18 +54,18 @@ const Home = () => {
   };
 
   return (
-    <Container id="homeContainer">
-      <Row id="headerRow" className="appRow">
+    <Container id="home-container">
+      <Row id="header-row" className="app-row">
         <Col>
           <h2>Currency Exchange</h2>
         </Col>
       </Row>
-      <Row id="selectorRow" className="appRow">
+      <Row id="selector-row" className="app-row">
         <Col>
           <Form.Control
             as="select"
-            id="nativeSelect"
-            className="exchangeSelect"
+            id="native-select"
+            className="exchange-select"
             onChange={(e) => handleChange(e, setNativeRate)}
             data-testid="nativeSelect"
             custom
@@ -74,14 +74,14 @@ const Home = () => {
         <Col>
           <Form.Control
             as="select"
-            id="foreignSelect"
-            className="exchangeSelect"
+            id="foreign-select"
+            className="exchange-select"
             onChange={(e: any) => handleChange(e, setForeignRate)}
             custom
           ></Form.Control>
         </Col>
       </Row>
-      <Row id="inputRow" className="appRow">
+      <Row id="input-row" className="app-row">
         <Col>
           <Form.Control
             id="nativeInput"
@@ -91,13 +91,13 @@ const Home = () => {
         </Col>
         <Col>
           <Form.Control
-            id="foreignInput"
+            id="foreign-input"
             value={foreignNumber}
             disabled
           ></Form.Control>
         </Col>
       </Row>
-      <Row id="btnRow" className="appRow">
+      <Row id="btn-row" className="app-row">
         <Col>
           <Button onClick={() => convertRate()}>Convert</Button>
         </Col>
