@@ -22,7 +22,7 @@ const Home = () => {
       }
       arr.sort();
 
-      var selectors = document.getElementsByClassName("exchangeSelect");
+      var selectors = document.getElementsByClassName("exchange-select");
       for (var i in arr) {
         var nativeOption = document.createElement("option");
         nativeOption.text = arr[i];
@@ -34,6 +34,9 @@ const Home = () => {
         foreignOption.value = arr[i];
         selectors[1].appendChild(foreignOption);
       }
+
+      setNativeRate(arr[0]);
+      setForeignRate(arr[0]);
     };
 
     fetchData();
@@ -77,6 +80,7 @@ const Home = () => {
             id="foreign-select"
             className="exchange-select"
             onChange={(e: any) => handleChange(e, setForeignRate)}
+            data-testid="foreignSelect"
             custom
           ></Form.Control>
         </Col>
@@ -84,8 +88,9 @@ const Home = () => {
       <Row id="input-row" className="app-row">
         <Col>
           <Form.Control
-            id="nativeInput"
+            id="native-input"
             value={nativeNumber}
+            data-testid="nativeInput"
             onChange={(e: any) => handleChange(e, setNativeNumber)}
           ></Form.Control>
         </Col>
@@ -93,6 +98,7 @@ const Home = () => {
           <Form.Control
             id="foreign-input"
             value={foreignNumber}
+            data-testid="foreignInput"
             disabled
           ></Form.Control>
         </Col>
